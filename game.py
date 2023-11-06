@@ -833,6 +833,8 @@ def spawn(timer, screen):
             new_t = Target(screen, rnd.randint(1,2))
         targets.append(new_t)
         time2sp = rnd.randint(5,10)
+        if scor.score > 20:
+            time2sp = time2sp * 5 /(scor.score// 10 + 4)
         return(0)
 def game_over():
     global targets, bullets
@@ -878,9 +880,7 @@ button3 = Button("again",
     screen, 3)
 buttons.append(button3)
 
-box = Box(screen)
 kamik = Kamikadze(screen)
-targets.append(box)
 targets.append(kamik)
 finished = False
 
@@ -888,6 +888,8 @@ finished = False
 timer_sp = 0
 time2sp = 10
 game_over()
+box = Box(screen)
+targets.append(box)
 while not finished:
     screen.fill(WHITE)
     gun.draw()
